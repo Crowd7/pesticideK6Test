@@ -11,7 +11,7 @@ const trend = new Trend(`GET_${trendName}`, true);
  * @param {object} parameter
  */
 function run(parameter) {
-    //console.log(`Bearer ${parameter.token}`);
+    console.log("外部有機資料下載 開始");
 
     let req = {
         "type":3,
@@ -48,8 +48,14 @@ function run(parameter) {
     
         const res2 = http.post(`${parameter.baseUrl}/${testUrl}`, JSON.stringify(req2), parameter.options);
 
-        console.log("external organic, i="+i+", total="+res2.json().data.totalPageCount);
-        console.log(generateGuid())
+        try {
+            console.log("external organic, i="+i+", total="+res2.json().data.totalPageCount);
+            if (res2.timings.duration>10000){
+                console.log(`duration is too large = ${res2.timings.duration} ms, i=${i}`)
+            }
+        } catch (error) {
+            fail(`unexpected response json`);
+        }
 
         const checkResult2 = check(res2, {
             "url is correct": (r) => r.url.indexOf(testUrl) >= 0,
@@ -62,6 +68,7 @@ function run(parameter) {
         }
       }
 
+      console.log("外部有機資料下載---END");
 }
 
 function generateGuid(){

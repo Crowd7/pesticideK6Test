@@ -2,3 +2,5 @@ node_modules
 build
 report/*.html
 report/*.json
+test_result.html
+test_result.json

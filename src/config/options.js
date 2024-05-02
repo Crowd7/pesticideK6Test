@@ -11,9 +11,9 @@ export const options = {
           gracefulRampDown: "0s",
           stages: [
             { duration: "0s", target: 2 },
-            { duration: "180s", target: 2 },
-            { duration: "300s", target: 2 },
-            { duration: "3600s", target: 2 }
+            //{ duration: "60s", target: 2 },
+            //{ duration: "120s", target: 30 },
+            { duration: "600s", target: 2 }
         ],
       },
   },

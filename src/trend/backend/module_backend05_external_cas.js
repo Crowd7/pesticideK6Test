@@ -12,7 +12,7 @@ const trend = new Trend(`GET_${trendName}`, true);
  */
 function run(parameter) {
 
-    //console.log(`Bearer ${parameter.token}`);
+    console.log("外部CAS資料下載 開始");
 
     let req = {
         "type":1,
@@ -62,6 +62,7 @@ function run(parameter) {
         }
       }
 
+    console.log("外部CAS資料下載---END");
 }
 
 export default {
